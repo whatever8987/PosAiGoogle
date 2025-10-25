@@ -3,7 +3,7 @@ import type React from 'react';
 
 export type Theme = 'light' | 'dark';
 
-export type Page = 'assistant' | 'appointments';
+export type Page = 'assistant' | 'appointments' | 'login' | 'register' | 'integrations' | 'insights' | 'predictions' | 'recommendations' | 'landing';
 
 export type CalendarView = 'month' | 'week' | 'day';
 
@@ -11,7 +11,7 @@ export interface QueryResult {
   sql: string;
   chartType: 'bar' | 'line' | 'pie';
   data: Record<string, any>[];
-  explanation: string;
+  explanation?: string;
   error?: string;
   followUps?: string[];
 }
@@ -59,5 +59,5 @@ export interface Appointment {
 export interface Technician {
     id: string;
     firstName: string;
-    lastName: string;
+    lastName:string;
 }

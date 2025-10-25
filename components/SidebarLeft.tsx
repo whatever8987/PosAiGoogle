@@ -1,11 +1,12 @@
 import React from 'react';
-import { Database, Bot, Search, HelpCircle, Settings, Calendar } from 'lucide-react';
+import { Database, Bot, Search, HelpCircle, Settings, Calendar, Zap, Lightbulb, TrendingUp, Star } from 'lucide-react';
 import type { Page } from '../types';
 
 interface SidebarLeftProps {
   isSidebarOpen: boolean;
   currentPage: Page;
   onNavigate: (page: Page) => void;
+  onLogout: () => void;
 }
 
 interface NavItemProps {
@@ -37,7 +38,7 @@ const NavItem: React.FC<NavItemProps> = ({ icon: Icon, label, active = false, is
   </button>
 );
 
-export const SidebarLeft: React.FC<SidebarLeftProps> = ({ isSidebarOpen, currentPage, onNavigate }) => {
+export const SidebarLeft: React.FC<SidebarLeftProps> = ({ isSidebarOpen, currentPage, onNavigate, onLogout }) => {
   return (
     <aside className={`fixed inset-y-0 left-0 z-40 bg-white border-r border-slate-200 dark:bg-slate-900 dark:border-slate-700/50 p-4 flex-col justify-between flex transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${isSidebarOpen ? 'translate-x-0 w-64' : '-translate-x-full md:w-20'}`}>
       <div className="flex flex-col w-full space-y-6">
@@ -52,6 +53,10 @@ export const SidebarLeft: React.FC<SidebarLeftProps> = ({ isSidebarOpen, current
         <nav className="flex flex-col space-y-2 w-full">
             <NavItem icon={Bot} label="AI Assistant" active={currentPage === 'assistant'} isSidebarOpen={isSidebarOpen} onClick={() => onNavigate('assistant')} />
             <NavItem icon={Calendar} label="Appointments" active={currentPage === 'appointments'} isSidebarOpen={isSidebarOpen} onClick={() => onNavigate('appointments')} />
+            <NavItem icon={Zap} label="Integrations" active={currentPage === 'integrations'} isSidebarOpen={isSidebarOpen} onClick={() => onNavigate('integrations')} />
+            <NavItem icon={Lightbulb} label="Insights" active={currentPage === 'insights'} isSidebarOpen={isSidebarOpen} onClick={() => onNavigate('insights')} />
+            <NavItem icon={TrendingUp} label="Predictions" active={currentPage === 'predictions'} isSidebarOpen={isSidebarOpen} onClick={() => onNavigate('predictions')} />
+            <NavItem icon={Star} label="Recommendations" active={currentPage === 'recommendations'} isSidebarOpen={isSidebarOpen} onClick={() => onNavigate('recommendations')} />
             <NavItem icon={Search} label="Search History" isSidebarOpen={isSidebarOpen} />
         </nav>
       </div>
@@ -65,7 +70,7 @@ export const SidebarLeft: React.FC<SidebarLeftProps> = ({ isSidebarOpen, current
           </div>
           <div className={`ml-3 overflow-hidden transition-all duration-200 ${isSidebarOpen ? 'opacity-100' : 'opacity-0 max-w-0'}`}>
               <p className="font-semibold text-sm whitespace-nowrap text-slate-900 dark:text-white">Admin User</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">View Profile</p>
+              <button onClick={onLogout} className="text-xs text-blue-500 hover:underline dark:text-blue-400 whitespace-nowrap">Logout</button>
           </div>
         </div>
       </div>

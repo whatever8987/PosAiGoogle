@@ -51,22 +51,6 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message, onSendMes
                     <ChartDisplay result={queryResult} theme={theme} />
                 </div>
             )}
-            
-            {/* Follow-up questions */}
-            {queryResult?.followUps && queryResult.followUps.length > 0 && (
-                <div className="space-y-2">
-                    {queryResult.followUps.map((q, i) => (
-                        <button
-                            key={i}
-                            onClick={() => onSendMessage(q)}
-                            className="w-full flex justify-between items-center text-left px-4 py-3 text-sm text-slate-700 bg-white dark:text-slate-300 dark:bg-slate-800 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700"
-                        >
-                            <span>{q}</span>
-                            <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-400" />
-                        </button>
-                    ))}
-                </div>
-            )}
         </div>
     </div>
   );
