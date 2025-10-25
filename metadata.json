@@ -1,0 +1,5 @@
+{
+  "name": "AI SQL Assistant Pro",
+  "description": "An enterprise-grade, chat-based interface for generating SQL queries from natural language. It allows users to ask questions about their data, view generated SQL, and see visualizations of the results, all within a sleek and intuitive UI.",
+  "requestFramePermissions": []
+}
